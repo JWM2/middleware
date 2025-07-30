@@ -72,7 +72,9 @@ def get_and_quarantine(query: DeviceQuery):
         mac = result[0]
         last_quarantine["mac"] = mac
         print(f"Told NAC to quarantine {mac}")
+        ## add API call to NAC here ##
         send_syslog_to_faz(query.deviceid, query.source_interface, query.ip, mac)
+        ## Sends CEF log to FAZ - generic CEF log parsor must be enabled ##
         return {"mac": mac}
     else:
         raise HTTPException(status_code=404, detail="MAC not found")
