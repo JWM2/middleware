@@ -129,3 +129,30 @@ Listed in `requirements.txt`, including:
 ---
 
 
+### 🧾 CEF Log Format
+
+When a MAC address is found using `/get-and-quarantine`, the app sends a **CEF-formatted syslog event** to FortiAnalyzer Cloud.
+
+**Example CEF message:**
+
+```
+CEF:0|MiddlewareCo|QuarantineApp|1.0|1001|MAC quarantine event|5|mac=AA:BB:CC:DD:EE:FF deviceid=FG60E101 srcintf=port1 ip=192.168.10.1
+```
+
+**Breakdown:**
+
+| Field          | Meaning                                         |
+|----------------|-------------------------------------------------|
+| `CEF:0`        | CEF version                                     |
+| `MiddlewareCo` | Vendor name                                     |
+| `QuarantineApp`| Product name                                    |
+| `1.0`          | Product version                                 |
+| `1001`         | Event ID                                        |
+| `MAC quarantine event` | Event name                             |
+| `5`            | Severity (scale 0–10; 5 = Medium)               |
+| `mac=...`      | MAC address of quarantined device               |
+| `deviceid=...` | Identifier of the firewall or device            |
+| `srcintf=...`  | Source interface of the device                  |
+| `ip=...`       | IP address used in the lookup                   |
+
+FortiAnalyzer must be configured to accept syslog over UDP on port `514` and recognize CEF format logs.
