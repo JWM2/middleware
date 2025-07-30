@@ -28,9 +28,14 @@ Add one or more devices to the database.
       "source_interface": "port1",
       "ip": "192.168.10.1",
       "mac": "AA:BB:CC:DD:EE:FF"
+    },
+    {
+      "deviceid": "FG60E102",
+      "source_interface": "port2",
+      "ip": "192.168.20.1",
+      "mac": "11:22:33:44:55:66"
     }
-  ]
-}
+
 
 POST /get-and-quarantine
 Look up a MAC address by deviceid, source_interface, and ip. If found, logs a CEF event to FortiAnalyzer.
