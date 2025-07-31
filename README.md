@@ -1,4 +1,4 @@
-# middleware-v5
+# middleware
 
 A lightweight FastAPI-based middleware application that maps network devices to MAC addresses and integrates with FortiAnalyzer Cloud via syslog (CEF format) for quarantine event logging.
 
